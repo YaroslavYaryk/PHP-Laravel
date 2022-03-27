@@ -11,18 +11,14 @@
 
 </head>
 <body>
-
 	<?php
 		session_start();
 		if (isset($_SESSION["user"])){
-			$is_authenticated = 1;
-		}else{
-			$is_authenticated = 0;
-		}
-
+            $is_authenticated = 1;
+        }else{
+            $is_authenticated = 0;
+        }
 	?>
-
-
 		<nav id="navbar" class="navbar">
 			<h1>The dojo blog</h1>
 			<div class="links">
@@ -31,13 +27,13 @@
 						<div class="block__link">
 							<a href="{{url('logout/')}}">Logout</a>
 						</div>
-					@else 
+					@else
 						<div class="block__link">
 							<a href="">Login</a>
 							<a href="{{url('reg_view/')}}">Registration</a>
 						</div>
-						
-					@endif	
+
+					@endif
 				<a href="{{ url('create/blog/') }}" style="
 					color: white;
 					background-color: #f1356d;
@@ -46,6 +42,6 @@
 		</nav >
 
 		@yield('content')
-			
+
 </body>
 </html>

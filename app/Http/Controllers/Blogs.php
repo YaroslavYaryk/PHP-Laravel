@@ -8,16 +8,6 @@ use App\Models\Blog;
 class Blogs extends Controller
 {
 
-    static function get_is_authenticated(){
-        $value = session('user');
-        echo $value;
-        $is_authenticated = false;
-        if ($value ){
-            $is_authenticated = true;
-        }
-        return $is_authenticated;
-    }
-
     public function index(Request $request)
     {
 
@@ -38,9 +28,12 @@ class Blogs extends Controller
         return redirect('/');
     }
 
-    public function create_blog_render()
+    public function create_blog_render(Request $request)
     {
-        return view('blogCreate',);
+        if ($request->session()->has('user')) {
+            return view('blogCreate',);
+        }
+        return redirect('reg_view/');
     }
 
     public function create_blog(Request $request)
@@ -52,6 +45,6 @@ class Blogs extends Controller
         $blog->author =  $request->author;
         $blog->save();
 
-        return redirect('/blogs');
+        return redirect('/');
     }
 }
