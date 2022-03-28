@@ -1,16 +1,15 @@
 @extends("base")
 
-@section("title", "Register")
+@section("title", "Login")
 
 
 @section("content")
 
 <div class="home">
-	<center><h1>Registration</h1></center>
-	<form method="POST" action="{{url('register')}}"  class="create">
+	<center><h1>Login</h1></center>
+	<form method="POST" action="{{url('login')}}"  class="create">
 		@csrf
 
-		<input type="text" name="email" placeholder="Enter Email" />
 		<input type="text" name="username" placeholder="Enter Username" />
 		<input type="password" name="password" placeholder="Enter password" />
 

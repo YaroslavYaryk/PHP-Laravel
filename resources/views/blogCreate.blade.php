@@ -21,12 +21,7 @@
 				required
 				name="body"
 			></textarea>
-			<label>Blog author:</label>
-			<input
-				type="text"
-				required
-				name="author"
-			/>
+			
 			<button type="submit">Add Blog</button>
 
 			<input type="hidden" name="_token" value="{{ csrf_token() }}" />

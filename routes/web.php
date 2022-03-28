@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Blogs;
 use App\Http\Controllers\Auth;
-
+use App\Models\Bloog;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,7 +30,13 @@ Route::get("reg_view/", [Auth::class, 'register_view']);
 
 Route::post("register", [Auth::class, 'register_user']);
 
+Route::get("login_view/", [Auth::class, 'login_view']);
+
+Route::post("login", [Auth::class, 'login_user']);
+
 Route::get("logout/", [Auth::class, 'logout']);
 
+
+Route::get("profile/{username}", [Blogs::class, 'get_profile']);
 
 

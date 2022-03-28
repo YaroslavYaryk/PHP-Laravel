@@ -11,7 +11,7 @@
 		<div>{{$blog->body}}</div>
 		<br>
 		<div class="bottom_block">
-			<p>Written by {{$blog->author}}</p>
+			<p>Written by {{$blog->user->username}}</p>
 			<div class="block__bottom">
 				<a class="btn__update del-post"href="{{ url('/blogs/' . $blog->id . '/delete/') }}">Delete blog</a>
 			</div>

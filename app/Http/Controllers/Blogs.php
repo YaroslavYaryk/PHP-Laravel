@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Blog;
+use App\Models\Bloog;
+use App\Models\User;
+
 
 class Blogs extends Controller
 {
@@ -11,20 +13,20 @@ class Blogs extends Controller
     public function index(Request $request)
     {
 
-        $blogs = Blog::all();
+        $blogs = Bloog::all();
         return view('blog_list', ["blogs" => $blogs]);
     }
 
     public function blog_details($id)
     {
 
-        $blog = Blog::where('id', $id)->first();
+        $blog = Bloog::where('id', $id)->first();
         return view('blogDetails', ["blog" => $blog]);
     }
 
     public function delete_blog($id)
     {
-        Blog::where('id', $id)->delete();
+        Bloog::where('id', $id)->delete();
         return redirect('/');
     }
 
@@ -39,12 +41,18 @@ class Blogs extends Controller
     public function create_blog(Request $request)
     {
 
-        $blog = new Blog();
+        $blog = new Bloog();
         $blog->title =  $request->title;
         $blog->body =  $request->body;
-        $blog->author =  $request->author;
+        $blog->user_id =  $request->session()->get('user')->id;
         $blog->save();
 
         return redirect('/');
+    }
+
+    public function get_profile(Request $request, $username)
+    {
+        $user = User::where("username",$username)->first();
+        return view("UserProfile", ["user"=>$user]);
     }
 }

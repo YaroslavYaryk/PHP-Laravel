@@ -15,9 +15,13 @@
 		session_start();
 		if (isset($_SESSION["user"])){
             $is_authenticated = 1;
+			$username = $_SESSION["user"]->username;
         }else{
             $is_authenticated = 0;
         }
+
+		
+
 	?>
 		<nav id="navbar" class="navbar">
 			<h1>The dojo blog</h1>
@@ -26,10 +30,12 @@
 					@if ($is_authenticated)
 						<div class="block__link">
 							<a href="{{url('logout/')}}">Logout</a>
+							<a href="{{url('profile/' . $username)}}">Profile</a>
+
 						</div>
 					@else
 						<div class="block__link">
-							<a href="">Login</a>
+							<a href="{{url('login_view/')}}">Login</a>
 							<a href="{{url('reg_view/')}}">Registration</a>
 						</div>
 

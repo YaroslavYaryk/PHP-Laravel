@@ -10,7 +10,7 @@
 				<div class="blog-preview blog__list" key={blog.title} >
 					<div class="block__left">
 						<a href="{{ url('/blogs/' . $blog->id) }}"><h2>{{$blog->title}}</h2></a>
-						<p>Written by {{$blog->author}}</p>
+						<p>Written by {{$blog->user->username}}</p>
 					</div>
 				</div>	
 				<div className="blog__right">
